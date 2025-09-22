@@ -131,33 +131,83 @@
   <section id="model" class="section">
     <h2>Model Overview</h2>
     <div class="card">
-      <p>The ABM will be designed to capture bacterial transmission among a population. Key characteristics of the model will include:  
+ <p>
+      The ABM will be designed to capture bacterial transmission among a population. Key characteristics of the model will include:
+    </p>
 
- Agent Characteristics: Each agent will represent an individual with specific attributes such as age, health status, and behavior patterns (hygiene and social interactions). These attributes will allow the model to represent a more realistic simulation of how different demographics respond to infections and interventions. We will have two classifications of agents, one being humans (patients, nurses, cleaners) and one being bacteria (one of the three types). Each agent will have their own characteristics and variables, which can be found in the next section titled 3.2 Core components. There you will find the complete list of variables for both types of agents, along with variable-types and descriptions that will explain what each variable does. 
+    <h3>Agent Characteristics</h3>
+    <p>
+      Each agent will represent an individual with specific attributes such as age, health status, and behavior patterns (hygiene and social interactions). These attributes will allow the model to represent a more realistic simulation of how different demographics respond to infections and interventions. We will have two classifications of agents, one being humans (patients, nurses, cleaners) and one being bacteria (one of the three types). Each agent will have their own characteristics and variables, which can be found in the next section titled <strong>3.2 Core components</strong>. There you will find the complete list of variables for both types of agents, along with variable-types and descriptions that will explain what each variable does.
+    </p>
 
-Environment Characteristics: The model will simulate numerous environments where transmission can occur, such as hospitals. The environment will have distinct characteristics, such as having patches that will simulate different parts of the hospital. Patches will have their own variables showing contamination or sanitation, and patch color to show whether or not the patch is contaminated. The environment will also be put on a cleaning frequency slider that will determine how often a random patch is cleaned. We will also track the effectiveness of each clean based on a scale from 0.0-1.0, where 0.0 means the clean was not very effective and 1.0 means the clean was extremely effective. These are also variables that are elaborated under section 3.2 Core components. 
+    <p>
+      The simulation time-step is set to zero, and all relevant global variables or data, such as the total number of bacteria, antibiotic-resistant bacteria, and susceptible bacteria, are initialized. A hospital environment is then constructed as a grid of patches, each representing a part of the hospital. These patches are initialized with default attributes: they are not contaminated, have a contamination duration of zero, are not cleaned, and are colored white to indicate a clean state.
+    </p>
 
-Transmission Pathways: The model will incorporate multiple transmission pathways, including direct contact, airborne transmission, and surface contamination. This will enable the exploration of how different means of transmission contribute to the spread of bacteria over patches and humans. Each pathway will have a specific chance of contaminating a patch or infecting a human based on which type of bacteria it is classified as, and whether or not the bacteria agent interacted with another patch or the human agent. 
+    <p>
+      Once the environment is set, the model generates agents. Bacterial agents are created with specific characteristics including species, whether they are resistant to antibiotics, growth and death rates, mutation rates, age, and quorum-sensing levels. Human agents, which include patients, nurses, and cleaners, are also initialized. These human agents have attributes such as hygiene behavior, movement patterns, infection status, infection duration, contact rate, and sensitivity to antibiotics.
+    </p>
 
-Intervention Strategies: The model will implement different public health interventions, such as patch sanitation, quarantining, and special antibiotics. The model will be able to adjust parameters to simulate the impact of these strategies on infection rates and outbreak dynamics. 
+    <h3>Simulation Loop</h3>
+    <p>
+      The core of the simulation runs in a continuous time-step loop. In each cycle, the time step is incremented. For each bacterium, the model simulates aging by increasing its age. If the bacterium exceeds its maximum age or meets a probabilistic death threshold, it is removed. If the growth conditions are favorable, that is, the local quorum sensing level exceeds a threshold and growth rate increases, the bacterium reproduces, and the offspring may mutate. Each bacterium then moves to an adjacent patch, and that patch becomes contaminated or remains contaminated if the patch was not clean, and the contamination duration increases by one.
+    </p>
 
-Simulation Scenarios: We will run simulations under different scenarios to evaluate the effectiveness of interventions. For example, we may simulate a sudden “outbreak” in a hospital setting and assess how different parameters from multiple characteristics react to conclude which characteristics are more important than others in reducing transmission. </p>
-    <p>The simulation begins with a time-step set to zero, and all relevant global variables or data, such as the total number of bacteria, antibiotic-resistant bacteria, and susceptible bacteria, are initialized. A hospital environment is then constructed as a grid of patches, each representing a part of the hospital. These patches are initialized with default attributes: they are not contaminated, have a contamination duration of zero, are not cleaned, and are colored white to indicate a clean state. 
+    <p>
+      Human agents act according to their roles. They move based on their defined movement patterns. When they encounter a contaminated patch, the model evaluates the chance of infection, influenced by the agent's contact rate, hygiene behavior, and the bacterial species. If infection occurs, the agent’s infection status is updated, and their infection duration starts to increase. Infected humans may also contribute to spreading the bacteria to nearby patches or other agents.
+    </p>
 
-Once the environment is set, the model generates agents. Bacterial agents are created with specific characteristics including species, whether they are resistant to antibiotics, growth and death rates, mutation rates, age, and quorum-sensing levels. Human agents, which include patients, nurses, and cleaners, are also initialized. These human agents have attributes such as hygiene behavior, movement patterns, infection status, infection duration, contact rate, and sensitivity to antibiotics. 
+    <h3>Interventions</h3>
+    <p>
+      Interventions are an essential part of the simulation. At user-defined intervals, cleaning events occur. The model selects patches, either randomized or targeted, and attempts to clean them. If cleaning is successful, the patch is marked as cleaned, its contaminated status is removed, and patch-color returns to white. However, if the cleaning is not entirely effective, some bacteria may remain, the patch stays contaminated, and its color may reflect a partially clean state. In such cases, the contamination duration continues to increase. Additionally, persistent contamination after a cleaning attempt can trigger antibiotic intervention. For example, if a patch has been cleaned but remains contaminated, the model can automatically activate antibiotics to address unresolved bacterial presence. This approach reflects real-world healthcare practices, where persistent contamination after environmental cleaning may necessitate chemical or antibiotic escalation to prevent further spread and resistance.
+    </p>
 
-The core of the simulation runs in a continuous time-step loop. In each cycle, the time step is incremented. For each bacterium, the model simulates aging by increasing its age. If the bacterium exceeds its maximum age or meets a probabilistic death threshold, it is removed. If the growth conditions are favorable, that is, the local quorum sensing level exceeds a threshold and growth rate increases, the bacterium reproduces, and the offspring may mutate. Each bacterium then moves to an adjacent patch, and that patch becomes contaminated or remains contaminated if the patch was not clean, and the contamination duration increases by one. 
+    <p>
+      Antibiotic interventions are governed by a predefined schedule. When antibiotics are active, each bacterium is evaluated. Non-resistant bacteria have a high probability of dying, while resistant ones survive. If antibiotics are not applied, bacteria continue to live or die based on their natural death rate without any additional external pressure.
+    </p>
 
-Human agents act according to their roles. They move based on their defined movement patterns. When they encounter a contaminated patch, the model evaluates the chance of infection, influenced by the agent's contact rate, hygiene behavior, and the bacterial species. If infection occurs, the agent’s infection status is updated, and their infection duration starts to increase. Infected humans may also contribute to spreading the bacteria to nearby patches or other agents. 
+    <p>
+      Throughout the simulation, data is collected and monitored. Metrics such as total bacteria count, resistant and susceptible populations, the number of contaminated patches, infection durations, and the frequency and effectiveness of interventions are logged at each timestep.
+    </p>
+  </div>
+</section>
 
-Interventions are an essential part of the simulation. At user-defined intervals, cleaning events occur. The model selects patches, either randomized or targeted, and attempts to clean them. If cleaning is successful, the patch is marked as cleaned, its contaminated status is removed, and patch-color returns to white. However, if the cleaning is not entirely effective, some bacteria may remain, the patch stays contaminated, and its color may reflect a partially clean state. In such cases, the contamination duration continues to increase. Additionally, persistent contamination after a cleaning attempt can trigger antibiotic intervention. For example, if a patch has been cleaned but remains contaminated, the model can automatically activate antibiotics to address unresolved bacterial presence. This approach reflects real-world healthcare practices, where persistent contamination after environmental cleaning may necessitate chemical or antibiotic escalation to prevent further spread and resistance. 
+<section id="environment-characteristics" class="section">
+  <h2>Environment Characteristics</h2>
+  <div class="card">
+    <p>
+      The model will simulate numerous environments where transmission can occur, such as hospitals. The environment will have distinct characteristics, such as having patches that will simulate different parts of the hospital. Patches will have their own variables showing contamination or sanitation, and patch color to show whether or not the patch is contaminated. The environment will also be put on a cleaning frequency slider that will determine how often a random patch is cleaned. We will also track the effectiveness of each clean based on a scale from 0.0-1.0, where 0.0 means the clean was not very effective and 1.0 means the clean was extremely effective. These are also variables that are elaborated under section <strong>3.2 Core components</strong>.
+    </p>
+  </div>
+</section>
 
-Antibiotic interventions are governed by a predefined schedule. When antibiotics are active, each bacterium is evaluated. Non-resistant bacteria have a high probability of dying, while resistant ones survive. If antibiotics are not applied, bacteria continue to live or die based on their natural death rate without any additional external pressure. 
+<section id="transmission-pathways" class="section">
+  <h2>Transmission Pathways</h2>
+  <div class="card">
+    <p>
+      The model will incorporate multiple transmission pathways, including direct contact, airborne transmission, and surface contamination. This will enable the exploration of how different means of transmission contribute to the spread of bacteria over patches and humans. Each pathway will have a specific chance of contaminating a patch or infecting a human based on which type of bacteria it is classified as, and whether or not the bacteria agent interacted with another patch or the human agent.
+    </p>
+  </div>
+</section>
 
-Throughout the simulation, data is collected and monitored. Metrics such as total bacteria count, resistant and susceptible populations, the number of contaminated patches, infection durations, and the frequency and effectiveness of interventions are logged at each timestep.  </p>
-    </div>
-  </section>
+<section id="intervention-strategies" class="section">
+  <h2>Intervention Strategies</h2>
+  <div class="card">
+    <p>
+      The model will implement different public health interventions, such as patch sanitation, quarantining, and special antibiotics. The model will be able to adjust parameters to simulate the impact of these strategies on infection rates and outbreak dynamics.
+    </p>
+  </div>
+</section>
 
+<section id="simulation-scenarios" class="section">
+  <h2>Simulation Scenarios</h2>
+  <div class="card">
+    <p>
+      We will run simulations under different scenarios to evaluate the effectiveness of interventions. For example, we may simulate a sudden “outbreak” in a hospital setting and assess how different parameters from multiple characteristics react to conclude which characteristics are more important than others in reducing transmission.
+    </p>
+  </div>
+</section>
+  
   <section id="results" class="section">
     <h2>Expected Results</h2>
     <div class="card">
