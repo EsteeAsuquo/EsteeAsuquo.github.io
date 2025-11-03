@@ -1,209 +1,87 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ABM Senior Design Project</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      background-color: #0a0a0a;
-      color: #e7e7e7;
-    }
-    nav {
-      background-color: #111;
-      padding: 1rem 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-bottom: 1px solid rgba(255,255,255,0.1);
-      position: sticky;
-      top: 0;
-    }
-    nav a {
-      margin: 0 0.5rem;
-      text-decoration: none;
-      color: #e7e7e7;
-    }
-    nav a:hover {
-      color: #D4AF37;
-    }
-    header {
-      padding: 4rem 2rem;
-      text-align: center;
-    }
-    header h1 span {
-      color: #D4AF37;
-    }
-    .section {
-      padding: 3rem 2rem;
-      max-width: 1000px;
-      margin: auto;
-    }
-    .card {
-      background: #0f0f10;
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 16px;
-      padding: 1.5rem;
-      margin: 1rem 0;
-    }
-    h2 {
-      color: #D4AF37;
-      margin-bottom: 1rem;
-    }
-    footer {
-      border-top: 1px solid rgba(255,255,255,0.1);
-      text-align: center;
-      padding: 2rem;
-      color: #aaa;
-    }
-    .gold-btn {
-      display: inline-block;
-      background: #D4AF37;
-      color: #111;
-      padding: 0.75rem 1.5rem;
-      border-radius: 8px;
-      margin-top: 1rem;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    .gold-btn:hover {
-      background: #f2d680;
-    }
-  </style>
-</head>
-<body>
-  <nav>
-    <div style="font-weight: bold; color: #D4AF37;">ABM Senior Design</div>
-    <div>
-      <a href="#abstract">Abstract</a>
-      <a href="#introduction">Introduction</a>
-      <a href="#related">Related Works</a>
-      <a href="#method">Method</a>
-      <a href="#model">Model</a>
-      <a href="#results">Expected Results</a>
-      <a href="#team">Team</a>
-      <a href="#resources">Resources</a>
-    </div>
-  </nav>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>BacteriaSim</title>
 
-  <header>
-    <h1>Agent-Based Modeling of <span>Gram-Negative Bacterial Transmission</span></h1>
-    <p>A senior design project exploring how micro-level interactions drive macro-level dynamics in healthcare and community settings.</p>
-    <a href="#model" class="gold-btn">Read Abstract</a>
-  </header>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
 
-  <!-- ABSTRACT -->
-  <section id="abstract" class="section">
-    <h2>Abstract</h2>
-    <div class="card">
-      <p>Antibiotic-resistant gram-negative bacteria pose a growing threat to public health due to their resilience against treatment and high transmission rates in environments such as hospitals and communities. We present an Agent-Based Model (ABM) for simulating the dynamics and spread of bacterial populations in hospitals. We will be focusing on three gram-negative bacteria: Acinetobacter baumannii, Enterobacteriaceae, and Pseudomonas aeruginosa. The NetLogo simulation will provide an understanding on bacterial growth, modeling transmission routes, studying antibiotic resistance, examine effects of antibiotic application and cleanliness interventions, and explore how quorum sensing impacts bacterial behavior. By collecting data on these bacteria, we can determine which interventions are most effective in prohibiting the transmission and spread of the bacteria.  </p>
-    </div>
-    <div class="card">
-      <h3>Keywords</h3>
-      <p>Agent-based model, Gram-negative bacteria, Health, Computational simulation </p>
-    </div>
-  </section>
-  
-  <!-- INTRODUCTION -->
-  <section id = "introduction" class= "section">
-    <h2>Introduction</h2>
-    <div class="card">
-      <p> Gram-negative bacteria and their species– Enterobacteriaceae, Acinetobacter baumannii and Pseudomonas aeruginosa can cause bacterial infections. These bacteria are among the world's most significant public health problems due to their high resistance to antibiotics. Enterobacteriaceae are bacilli, non-sporulated, have variable motility, grow in the presence and absence of oxygen, ferment organisms of glucose, are cytochrome oxidase negative, and can reduce nitrate to nitrite. The non-fermenter, gram-negative bacilli (BNF) have a lower frequency of isolation when compared to Enterobacteriaceae yet are relevant because of their ability to induce severe or fatal infections, especially in hospital environments. The main BNF microorganisms that cause these diseases are Pseudomonas aeruginosa and Acinetobacter baumanii. These microorganisms spread through hospitals via airways, contaminated surfaces, and patient to patient interaction, and are considered nosocomial pathogens because of their healthcare-associated infections (HAI’s) that complicate patient recovery. Due to the nature of these bacteria, and their immunity to most common antibiotics, it is imperative that we assess the biological cost to determine the stability and potential reversibility of resistance as a potential solution. These bacteria also could communicate through a process called quorum-sensing, which allow colonies to detect their population density through the release and sensing of signaling molecules, or autoinducers, that allow the bacteria to coordinate collective behaviors such as biofilm and virulence. They can cause foodborne illnesses, and also infect patients in the hospital, bringing harmful diseases to humans, plants, and animals. These bacteria are extremely resistant to standard antibiotics and our immune system, which makes them difficult to control, leading to fierce outbreaks and a rise in the number of deaths, especially amongst the elderly and immunocompromised individuals. 
+  <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="wrap header-inner">
+        <div class="brand"><a href="#home">BacteriaSim</a></div>
 
-      Agent-based modeling (ABM) allows for a detailed and intensive study and analysis of the different bacteria transmission and impact. Agent-based modeling is the computational model approach to simulate interactions between individual agents in a defined environment. Each agent has their own characteristics, behaviors, and decision-making capabilities. The difference between conventional statistical models and ABMs is that the latter can be used to simulate interactions between agents, the environment, and different pathways. This helps in the identification of high-risk areas, prediction of outbreaks, and evaluation of the effectiveness of various interventional modalities including the use of quarantining and antibiotics.  
+        <button id="navToggle" class="nav-toggle" aria-expanded="false" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
 
-      The primary objective of this project is to utilize ABMs to aid public health strategies in reducing the spread of gram-negative bacterial infections. By using ABMs, we are hoping to get incremental outcomes that can be used in suggesting healthier policies and protective measures concerning gram-negative bacteria in communities.  
+        <nav class="main-nav" id="mainNav" aria-label="Primary">
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="vision.html">Vision</a></li>
+            <li><a href="team.html">Team</a></li>
+            <li><a href="code.html">Code</a></li>
+            <li><a href="report.html">Report</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
 
-      This work is organized as follows: This section presents the problem and the objectives of the present research. Section 2 will provide the related works that will give context to this study. Section 3 will describe the methods used to develop the ABM’s framework and the core components used for this study, and Section 4 will discuss preliminary results along with future research proposals. </p>
-    </div>
-  </section>
-  
-  <!-- RELATED WORKS -->
-  <section id="related" class="section">
-    <h2>Related Works</h2>
-    <div class="card">
-      <p>Modeling bacterial or viral infections via NetLogo is something that is not new to the field [4][5][6]. However, modeling these 3 specific gram-negative bacteria has not been done yet to the best of our knowledge. There are several other studies that align with our goals and provide a good framework for what we are trying to accomplish, such as.. </p>
-    </div>
-  </section>
+    <main>
+      <!-- HOME -->
+      <section id="home" class="page active" data-page>
+        <div class="wrap hero-grid">
+          <div class="hero-media">
+            <img src="assets/bac1.png" alt="bacteria hero" class="hero-img"/>
+          </div>
+          <div class="hero-content">
+            <p class="kicker">Agent-Based Modeling in NetLogo</p>
+            <h1>Our goal is to create safer and cleaner spaces, promoting health and well‑being through simulation of interventions on the world's most dangerous bacteria.</h1>
+            <p class="lead">Explore models, results, and source code to see how targeted interventions can reduce transmission risk.</p>
+            <p><a class="cta" href="vision.html">Learn More</a></p>
+          </div>
+        </div>
+      </section>
 
-  <!-- Method -->
-  <section id="method" class="section">
-    <h2>Method</h2>
-    <div class="card">
-      <p>In this section, we aim to provide the methods used and the model framework for bacterial infections and how they spread in the environments selected. We will start introducing NetLogo as a suitable tool for building ABM simulations, and then we will provide a depicted description of the model developed and all its important elements.</p>
-    
-      <p>NetLogo is a multi-agent programmable modeling environment that is well-suited for simulating natural and social phenomena. The tool was developed by Uri Wilensky and is widely used for education and research. This tool allows users to create models where individual agents interact with each other and their environment. NetLogo also provides its own programming language that is designed to be easy to learn, along with an easy-to-use graphical interface. NetLogo will allow us to create a simplified yet intelligible version of a population in various locations like hospitals that can simulate different paths of transmission with different means of transmission like direct contact, inhaling contaminated air particles, or infection through contaminated surfaces.</p>
-      <p>The literature review will involve analyzing existing research on bacterial transmission, antibiotic resistance mechanisms, and public health interventions. Sources will include academic journals, and case studies from institutions like the CDC (Centers for Disease Control and Prevention) and the WHO (World Health Organization) which will help refine our model's parameters, such as infection probabilities, incubation periods, and the effectiveness of the treatments. We then can accurately represent bacteria as agents which then can be controlled through various sliders and settings that will produce results we want. </p>
-    </div>
-  </section>
-  <!-- Model -->
-  <section id="model" class="section">
-    <h2>Model Overview</h2>
-    <div class="card">
- <p>
-      The ABM will be designed to capture bacterial transmission among a population. Key characteristics of the model will include:
-    </p>
+      <!-- GALLERY (two large images side-by-side) -->
+      <section class="gallery wrap">
+        <div class="grid">
+          <img src="assets/bac2.png" alt="bacteria 2">
+          <img src="assets/bac3.png" alt="bacteria 3">
+        </div>
+      </section>
+    </main>
 
-    <h3>1. Agent Characteristics</h3>
-    <p>
-      Each agent will represent an individual with specific attributes such as age, health status, and behavior patterns (hygiene and social interactions). These attributes will allow the model to represent a more realistic simulation of how different demographics respond to infections and interventions. We will have two classifications of agents, one being humans (patients, nurses, cleaners) and one being bacteria (one of the three types) and each agent will have it's own characteristics.
-    </p>
+    <footer class="site-footer">
+      <div class="wrap footer-grid">
+        <div>
+          <strong>BacteriaSim</strong><br>
+          Calvin University
+        </div>
+        <div class="subscribe">
+          <h3>Sign Up To Stay Updated</h3>
+          <form id="subscribeForm">
+            <input type="email" id="subEmail" placeholder="Email address" aria-label="Email address" required>
+            <button type="submit">Sign Up</button>
+          </form>
+          <p class="form-msg" id="formMsg" aria-live="polite"></p>
+        </div>
+        <div class="links">
+          <a href="#home">Home</a>
+          <a href="#vision">Vision</a>
+          <a href="#team">Team</a>
+          <a href="#code">Code</a>
+          <a href="#report">Report</a>
+        </div>
+      </div>
+      <div class="copyright">© <span id="year"></span> BacteriaSim</div>
+    </footer>
 
-    <h3>2. Environment Characteristics</h3>
-      <p>
-        The model will simulate numerous environments where transmission can occur, such as hospitals. The environment will have distinct characteristics, such as having patches that will simulate different parts of the hospital. Patches will have their own variables showing contamination or sanitation, and patch color to show whether or not the patch is contaminated. The environment will also be put on a cleaning frequency slider that will determine how often a random patch is cleaned. We will also track the effectiveness of each clean based on a scale from 0.0-1.0, where 0.0 means the clean was not very effective and 1.0 means the clean was extremely effective
-      </p>
-      
-    <h3>3. Transmission Pathways </h3>
-    <p>
-      The model will incorporate multiple transmission pathways, including direct contact, airborne transmission, and surface contamination. This will enable the exploration of how different means of transmission contribute to the spread of bacteria over patches and humans. Each pathway will have a specific chance of contaminating a patch or infecting a human based on which type of bacteria it is classified as, and whether or not the bacteria agent interacted with another patch or the human agent.
-    </p>
-
-    <h3>4. Intervention Strategies</h3>
-    <p>
-     The model will implement different public health interventions, such as patch sanitation, quarantining, and special antibiotics. The model will be able to adjust parameters to simulate the impact of these strategies on infection rates and outbreak dynamics. 
-    </p>
-
-    <h3>5. Simulation Scenarios</h3>
-    <p>
-      Throughout the simulation, data is collected and monitored. Metrics such as total bacteria count, resistant and susceptible populations, the number of contaminated patches, infection durations, and the frequency and effectiveness of interventions are logged at each timestep.
-    </p>
-  </div>
-</section>
-  
-  <section id="results" class="section">
-    <h2>Expected Results</h2>
-    <div class="card">
-      <p>The expected outcomes of this project include insights into transmission pathways, evaluation of intervention strategies, and a contribution to the medical field. The model will provide valuable insights on how antibiotic-resistant gram-negative bacteria spread within different environments. By identifying high-risk areas and transmission pathways, public health officials can better target preventative intervention strategies. The simulations we create will allow us to evaluate the effectiveness of public health strategies in controlling bacterial infections. This will help persuade policy decisions and resource allocation, leading to more effective management of antibiotic-resistant bacteria. The findings from the model will contribute to the development of data-driven recommendations for public health authorities. These recommendations may include guidelines for infection control practices, vaccination strategies, and public awareness campaigns. By utilizing agent-based modeling, this project aims to provide valuable data on the current understanding of antibiotic-resistant bacterial infections. In the future, we would like to….. </p>
-    </div>
-  </section>
-
-  <section id="team" class="section">
-    <h2>Team</h2>
-    <div class="card">
-      <strong>Eric Araujo(Advisor)</strong><br>
-    </div>
-    <div class="card">
-      <strong>Esther Asuquo</strong><br>
-    </div>
-    <div class="card">
-      <strong>David Barry</strong><br>
-    </div>
-  </section>
-
-  <section id="resources" class="section">
-    <h2>Resources</h2>
-    <div class="card">
-      <p><a href="https://github.com/" target="_blank" style="color:#D4AF37;">GitHub Repository</a></p>
-      <p><a href="#" style="color:#D4AF37;">Documentation</a></p>
-    </div>
-  </section>
-
-  <footer>
-    © 2025 ABM Senior Design
-  </footer>
-</body>
+  <script src="script.js"></script>
+  </body>
 </html>
 

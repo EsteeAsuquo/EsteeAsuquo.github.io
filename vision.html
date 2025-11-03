@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>BacteriaSim — Vision</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="wrap header-inner">
+        <div class="brand"><a href="index.html">BacteriaSim</a></div>
+        <button id="navToggle" class="nav-toggle" aria-expanded="false" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+        <nav class="main-nav" id="mainNav" aria-label="Primary">
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="vision.html">Vision</a></li>
+            <li><a href="team.html">Team</a></li>
+            <li><a href="code.html">Code</a></li>
+            <li><a href="report.html">Report</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Hero banner with background image and large heading (consistent with home) -->
+    <section class="hero-banner">
+      <div class="banner-image" style="background-image:url('assets/bac1.png')"></div>
+      <div class="wrap">
+        <div class="banner-intro">
+          <p class="kicker">BacteriaSim</p>
+          <h1>We aim to provide useful modeling results to help combat the transmission of bacterial pathogens.</h1>
+        </div>
+      </div>
+    </section>
+
+    <main>
+      <section class="vision-panel">
+        <div class="wrap vision-grid">
+          <div class="vision-title">
+            <h2>Vision</h2>
+          </div>
+          <div class="vision-card">
+            <p>Antibiotic-resistant gram-negative bacteria and their species—Enterobacteriaceae, Acinetobacter baumannii, and Pseudomonas aeruginosa can cause bacterial infections, which is a threat to public health. They can even occur in foodborne illnesses, infect patients in the hospital, and bring so many harmful diseases to humans, plants, and animals. They are stronger than our immune system, which makes them more difficult to control, leading to fierce outbreaks and a rise in the number of deaths, especially amongst the elderly and immunocompromised individuals. The method of agent-based modeling (ABM) is provided for a detailed and intensive study and analysis of the different bacteria’s transmission and impact. The difference between the conventional statistical models and ABM is that the latter can simulate interactions between individuals, the environment, and different pathways. This helps in the identification of high-risk areas, prediction of outbreaks, and evaluation of the effectiveness of various interventional modalities, including the use of cleaning and antibiotics.</p>
+
+            <p>The primary objective of this project is to utilize ABM to aid public health strategies in reducing the spread of these gram-negative bacterial infections. Through the use of technology and data-provided understandings of other possible solutions, we are hoping to get a list of outcomes that can be used in suggesting healthy policy and protective measures concerning these gram-negative bacteria in communities.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap footer-grid">
+        <div><strong>BacteriaSim</strong><br>Calvin University</div>
+        <div class="subscribe">
+          <h3>Sign Up To Stay Updated</h3>
+          <form id="subscribeForm"><input type="email" id="subEmail" placeholder="Email address" required><button type="submit">Sign Up</button></form>
+          <p class="form-msg" id="formMsg" aria-live="polite"></p>
+        </div>
+        <div class="links"><a href="index.html">Home</a><a href="vision.html">Vision</a><a href="team.html">Team</a><a href="code.html">Code</a><a href="report.html">Report</a></div>
+      </div>
+      <div class="copyright">© <span id="year"></span> BacteriaSim</div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

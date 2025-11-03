@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>BacteriaSim — Code</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="wrap header-inner">
+        <div class="brand"><a href="index.html">BacteriaSim</a></div>
+        <button id="navToggle" class="nav-toggle" aria-expanded="false" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+        <nav class="main-nav" id="mainNav" aria-label="Primary">
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="vision.html">Vision</a></li>
+            <li><a href="team.html">Team</a></li>
+            <li><a href="code.html">Code</a></li>
+            <li><a href="report.html">Report</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="section">
+        <div class="wrap">
+          <h1>Code</h1>
+          <div class="card">
+            <p>The project's NetLogo models, analysis scripts, and code will be hosted here (link to GitHub repository when available).</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap footer-grid">
+        <div><strong>BacteriaSim</strong><br>Calvin University</div>
+        <div class="subscribe">
+          <h3>Sign Up To Stay Updated</h3>
+          <form id="subscribeForm"><input type="email" id="subEmail" placeholder="Email address" required><button type="submit">Sign Up</button></form>
+          <p class="form-msg" id="formMsg" aria-live="polite"></p>
+        </div>
+        <div class="links"><a href="index.html">Home</a><a href="vision.html">Vision</a><a href="team.html">Team</a><a href="code.html">Code</a><a href="report.html">Report</a></div>
+      </div>
+      <div class="copyright">© <span id="year"></span> BacteriaSim</div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
