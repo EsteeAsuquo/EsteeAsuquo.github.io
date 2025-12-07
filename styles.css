@@ -302,6 +302,16 @@ body {
   gap: 24px;
 }
 
+/* Center subscribe column specifically on the Report page */
+.footer-report {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+}
+.footer-report .project-links { justify-self: start; }
+.footer-report .subscribe { justify-self: center; }
+.footer-report .links, .footer-report > div:last-child { justify-self: end; }
+
 /* Ensure footer spans full viewport width */
 .site-footer .wrap {
   max-width: none;
@@ -432,8 +442,11 @@ body {
     gap: 30px;
   }
   .footer-grid {
-    grid-template-columns: 1fr;
+    flex-direction: column;
     row-gap: 18px;
+  }
+  .footer-report {
+    grid-template-columns: 1fr;
   }
   .main-nav {
     position: fixed;
