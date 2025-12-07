@@ -2,21 +2,28 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>BacteriaSim</title>
 
     <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
 
-  <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
     <header class="site-header">
       <div class="wrap header-inner">
-        <div class="brand"><a href="#home">BacteriaSim</a></div>
+        <div class="brand">
+          <a href="#home">BacteriaSim</a>
+        </div>
 
         <button id="navToggle" class="nav-toggle" aria-expanded="false" aria-label="Toggle menu">
-          <span></span><span></span><span></span>
+          <span></span>
+          <span></span>
+          <span></span>
         </button>
 
         <nav class="main-nav" id="mainNav" aria-label="Primary">
@@ -36,12 +43,19 @@
       <section id="home" class="page active" data-page>
         <div class="wrap hero-grid">
           <div class="hero-media">
-            <img src="assets/bac1.png" alt="bacteria hero" class="hero-img"/>
+            <img src="assets/bac1.png" alt="bacteria hero" class="hero-img" />
           </div>
           <div class="hero-content">
             <p class="kicker">Agent-Based Modeling in NetLogo</p>
-            <h1>Our goal is to create safer and cleaner spaces, promoting health and well‑being through simulation of interventions on the world's most dangerous bacteria.</h1>
-            <p class="lead">Explore models, results, and source code to see how targeted interventions can reduce transmission risk.</p>
+            <h1>
+              Our goal is to create safer and cleaner spaces, promoting health
+              and well‑being through simulation of interventions on the world's
+              most dangerous bacteria.
+            </h1>
+            <p class="lead">
+              Explore models, results, and source code to see how targeted
+              interventions can reduce transmission risk.
+            </p>
             <p><a class="cta" href="vision.html">Learn More</a></p>
           </div>
         </div>
@@ -50,8 +64,8 @@
       <!-- GALLERY (two large images side-by-side) -->
       <section class="gallery wrap">
         <div class="grid">
-          <img src="assets/bac2.png" alt="bacteria 2">
-          <img src="assets/bac3.png" alt="bacteria 3">
+          <img src="assets/bac2.png" alt="bacteria 2" />
+          <img src="assets/bac3.png" alt="bacteria 3" />
         </div>
       </section>
     </main>
@@ -59,13 +73,19 @@
     <footer class="site-footer">
       <div class="wrap footer-grid">
         <div>
-          <strong>BacteriaSim</strong><br>
+          <strong>BacteriaSim</strong><br />
           Calvin University
         </div>
         <div class="subscribe">
           <h3>Sign Up To Stay Updated</h3>
           <form id="subscribeForm">
-            <input type="email" id="subEmail" placeholder="Email address" aria-label="Email address" required>
+            <input
+              type="email"
+              id="subEmail"
+              placeholder="Email address"
+              aria-label="Email address"
+              required
+            />
             <button type="submit">Sign Up</button>
           </form>
           <p class="form-msg" id="formMsg" aria-live="polite"></p>
@@ -81,7 +101,7 @@
       <div class="copyright">© <span id="year"></span> BacteriaSim</div>
     </footer>
 
-  <script src="script.js"></script>
+    <script src="script.js"></script>
   </body>
 </html>
 

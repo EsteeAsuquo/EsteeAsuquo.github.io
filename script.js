@@ -1,7 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
   // Copyright year
   const yearEl = document.getElementById('year');
-  if (yearEl) yearEl.textContent = new Date().getFullYear();
+  if (yearEl) {
+    yearEl.textContent = new Date().getFullYear();
+  }
 
   // Mobile nav toggle
   const navToggle = document.getElementById('navToggle');
@@ -12,8 +14,8 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // Highlight active nav link based on pathname (works across separate pages)
-  const current = (location.pathname.split('/').pop() || 'index.html');
-  document.querySelectorAll('.main-nav a').forEach(a => {
+  const current = location.pathname.split('/').pop() || 'index.html';
+  document.querySelectorAll('.main-nav a').forEach((a) => {
     const href = a.getAttribute('href') || '';
     const target = href === '' ? 'index.html' : href;
     const filename = target.split('/').pop();
@@ -24,7 +26,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     // close mobile nav when a link is clicked
     a.addEventListener('click', () => {
-      if (mainNav.classList.contains('open')) mainNav.classList.remove('open');
+      if (mainNav.classList.contains('open')) {
+        mainNav.classList.remove('open');
+      }
     });
   });
 
@@ -35,11 +39,19 @@ document.addEventListener('DOMContentLoaded', () => {
     e.preventDefault();
     const email = document.getElementById('subEmail')?.value;
     if (!email) {
-      if (msg) msg.textContent = 'Please enter a valid email.';
+      if (msg) {
+        msg.textContent = 'Please enter a valid email.';
+      }
       return;
     }
-    if (msg) msg.textContent = 'Thanks — you are subscribed!';
+    if (msg) {
+      msg.textContent = 'Thanks — you are subscribed!';
+    }
     form.reset();
-    setTimeout(()=>{ if(msg) msg.textContent=''; }, 3500);
+    setTimeout(() => {
+      if (msg) {
+        msg.textContent = '';
+      }
+    }, 3500);
   });
 });

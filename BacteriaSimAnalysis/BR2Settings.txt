@@ -1,0 +1,7 @@
+// Variables i changed for the batch run
+["antibiotic-administration-period" 20 50 80]
+["total-patients" 20 50 100]
+["antibiotic-application" true]
+["antibiotic-strength-level" 2.5 5 7.5]
+["cleaning-effectiveness" 0.2 0.4 0.8]
+["cleaning-frequency" 50]
