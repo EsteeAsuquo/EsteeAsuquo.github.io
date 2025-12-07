@@ -335,6 +335,16 @@ body {
   text-decoration: underline;
 }
 
+/* Report page project links */
+.project-links a {
+  color: var(--white);
+  text-decoration: none;
+}
+
+.project-links a:hover {
+  text-decoration: underline;
+}
+
 .site-footer {
   background: var(--panel);
   color: var(--muted);
