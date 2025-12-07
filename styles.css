@@ -42,7 +42,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 18px 0;
+  padding: 28px 24px; /* taller header */
 }
 
 .site-header {
@@ -51,6 +51,17 @@ body {
   position: sticky;
   top: 0;
   z-index: 50;
+  width: 100%;
+  min-height: 72px; /* ensure consistent height */
+  display: flex;
+  align-items: center; /* vertically center header content */
+}
+
+/* Make header content span full viewport width */
+.site-header .wrap {
+  max-width: none;
+  width: 100%;
+  padding: 0 24px; /* match footer horizontal padding */
 }
 
 .brand a {
@@ -285,10 +296,36 @@ body {
 }
 
 .footer-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr 220px;
+  display: flex;
+  align-items: center; /* vertically center footer columns */
+  justify-content: space-between;
   gap: 24px;
-  align-items: start;
+}
+
+/* Ensure footer spans full viewport width */
+.site-footer .wrap {
+  max-width: none;
+  width: 100%;
+  padding: 0 24px;
+}
+
+/* Footer columns: left, center (subscribe), right */
+.site-footer .wrap > div:first-child {
+  min-width: 220px;
+}
+
+.site-footer .subscribe {
+  flex: 1 1 auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* horizontally center inner content */
+  justify-content: center; /* vertically center inner content */
+}
+
+.site-footer .links {
+  min-width: 220px;
+  align-items: flex-end;
 }
 
 .subscribe h3 {
@@ -297,13 +334,17 @@ body {
   font-family: "Playfair Display", serif;
 }
 
-#subscribeForm {
-  display: flex;
+#subscribeForm { 
+  display: inline-flex; /* shrink to content and allow horizontal centering */
   gap: 10px;
+  justify-content: center;
+  align-items: center;
 }
 
 #subscribeForm input {
-  flex: 1;
+  flex: none; /* avoid stretching too wide */
+  width: 280px; /* smaller horizontal size */
+  max-width: 100%;
   padding: 10px;
   border-radius: 6px;
   border: 1px solid rgba(255, 255, 255, 0.06);
