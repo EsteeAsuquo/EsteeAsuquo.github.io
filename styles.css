@@ -1,5 +1,5 @@
 :root {
-  --bg: #3a2d00; /* dark yellow-brown background */
+  --bg: #f3d36b; /* lighter yellow */
   --panel: #1b1b1b; /* header/footer dark */
   --muted: #cfc6c0; /* light muted text */
   --accent: #D4AF37; /* gold accent */
@@ -50,7 +50,7 @@ body {
   border-bottom: 1px solid rgba(255, 255, 255, 0.04);
   position: sticky;
   top: 0;
-  z-index: 50;
+    --bg: #e0b000; /* medium yellow */
   width: 100%;
   min-height: 72px; /* ensure consistent height */
   display: flex;
@@ -283,6 +283,45 @@ body {
 
 .code-block code {
   white-space: pre;
+}
+
+.code-images {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+  justify-items: center; /* center images within the card */
+}
+
+.code-images img {
+  max-width: 720px; /* constrain to a professional width */
+  height: auto;
+  display: block;
+  border-radius: 8px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.25);
+}
+  max-width: 720px;
+@media (max-width: 900px) {
+  .code-images img {
+    max-width: 100%; /* full width on small screens */
+  }
+}
+
+.code-images img.small {
+  max-width: 600px;
+}
+
+.code-figure {
+  margin: 16px auto;
+  max-width: 720px;
+}
+
+.code-figcaption {
+  color: #f5f5f5;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  text-align: center;
+  margin-top: 6px;
+  opacity: 0.9;
 }
 
 .section h2 {
@@ -570,6 +609,30 @@ body {
   margin: 0 auto;
   color: rgba(246, 242, 240, 0.95);
   line-height: 1.8;
+}
+
+/* Ensure images inside the report content fit the text width */
+.report-card img,
+.report-article img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 12px auto; /* center within the text column */
+  border-radius: 8px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.25);
+}
+
+/* Figure and caption styling for report images */
+.report-figure {
+  margin: 18px 0;
+}
+
+.report-figcaption {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 13px;
+  line-height: 1.5;
+  text-align: center;
+  margin-top: 8px;
 }
 
 .report-card h3 {

@@ -36,167 +36,94 @@
         <div class="wrap">
           <h1>Report</h1>
           <div class="card report-article">
-            <h2>Senior Project Proposal</h2>
+            <h2>DISCUSSION AND EXPECTED RESULTS</h2>
             <p><strong>Department of Computer Science</strong></p>
             <p><strong>Calvin University</strong></p>
             <p><strong>Title:</strong> BacteriaSim</p>
             <p><strong>Author(s):</strong> David Barry and Esther Asuquo</p>
-            <p><strong>Date:</strong> April 8, 2025</p>
+            <p><strong>Date:</strong> Dec 5, 2025</p>
             <p><strong>Advisor:</strong> Professor Eric Araujo</p>
 
-            <h3>Background and Problem</h3>
+            <h3>Some Useful Insights</h3>
             <p>
-              Antibiotic-resistant gram-negative bacteria and their species –
-              Enterobacteriaceae, Acinetobacter baumannii, and Pseudomonas
-              aeruginosa – can cause bacterial infections that pose a threat to
-              public health. These bacteria can cause foodborne illnesses,
-              infect patients in hospitals, and bring many harmful diseases to
-              humans, plants, and animals. They are stronger than antibiotics
-              and, in some cases, the immune system, which makes them more
-              difficult to control, leading to fierce outbreaks and a rise in
-              the number of deaths, especially among the elderly and
-              immunocompromised individuals.
-            </p>
-            <p>
-              The method of agent-based modeling (ABM) is provided for a
-              detailed and intensive study and analysis of the different
-              bacteria's transmission and impact. Unlike conventional
-              statistical models, ABM can simulate interactions between
-              individuals, the environment, and different routes or mechanisms
-              through which bacteria are transmitted from one host or surface to
-              another. This helps identify high-risk areas, predict outbreaks,
-              and evaluate the effectiveness of various interventions, including
-              quarantine and antibiotic strategies.
+              The expected outcomes of this project include insights into the 
+              evaluation of intervention strategies, and a contribution to the medical field. 
+              The simulation we create will allow us to evaluate the effectiveness of 
+              public health strategies in controlling bacterial infections. 
+              This will help persuade policy decisions and resource allocation, 
+              leading to more effective management of antibiotic-resistant bacteria. 
+              The findings from the model will contribute to the development of data-driven 
+              recommendations for public health authorities. These recommendations may include 
+              guidelines for infection control practices, vaccination strategies, and public 
+              awareness campaigns. By utilizing agent-based modeling, this project aims to 
+              provide valuable data on the current understanding of antibiotic-resistant 
+              bacterial infections.  
             </p>
 
-            <p>
-              The primary objective of this project is to utilize ABM to aid
-              public health strategies in reducing the spread of these
-              gram-negative bacterial infections. Through the use of technology
-              and data-driven understanding of possible solutions, we hope to
-              produce actionable results that can inform policy and protective
-              measures concerning these gram-negative bacteria in communities.
-            </p>
-
-            <h3>Brief Description of Solution Being Provided</h3>
-            <p>
-              We will develop an agent-based model using NetLogo to simulate and
-              capture bacterial transmission among a population. Key
-              characteristics of the model will include:
-            </p>
-            <ul>
-              <li>
-                <strong>Agent Characteristics:</strong> Each agent will
-                represent an individual with attributes such as age, health
-                status, and behavior patterns (hygiene and social interactions).
-                These attributes will allow the model to represent a more
-                realistic simulation of how different demographics respond to
-                infections and interventions.
-              </li>
-              <li>
-                <strong>Environment Characteristics:</strong> The model will
-                simulate several environments where transmission can occur,
-                including hospitals, communities, and food production areas.
-                Each environment will have distinct
-                characteristics—population density, sanitation levels, and
-                access to healthcare—which influence transmission and recovery
-                rates.
-              </li>
-              <li>
-                <strong>Transmission Pathways:</strong> The model will
-                incorporate multiple transmission pathways, including direct
-                contact, airborne transmission, and surface contamination. This
-                will enable exploration of how different modes of transmission
-                contribute to spread.
-              </li>
-              <li>
-                <strong>Intervention Strategies:</strong> The model will
-                implement different public health interventions—enhanced
-                sanitation, quarantining, and antibiotics—and offer parameter
-                adjustments to simulate their impact on infection rates and
-                outbreak dynamics.
-              </li>
-            </ul>
+            <img src="assets/plot_input_outcome_correlations.png" alt="Figure 3: Correlation heatmap of variable input parameters to the output reporters tracked." />
+            
+            <img src="assets/plot_correlation_heatmap.png" alt="Figure 4: Correlation heatmap between output reporters." />
 
             <p>
-              <strong>Simulation Scenarios:</strong> We will run simulations
-              under different scenarios to evaluate intervention effectiveness.
-              For example, we may simulate a sudden outbreak in a hospital
-              setting and assess how parameter changes affect transmission and
-              identify which characteristics are most important in reducing
-              spread.
+              From the data, we have concluded some interesting metrics. According to 
+              Figure 4, we can see that there are some obvious correlations between successful 
+              antibiotic administration and the total patients recovering/being discharged. 
+              From Figure 3, the most important metrics gathered are from the variable cleaning 
+              metrics. We have found that there is a 0.5 positive correlation between cleaning 
+              effectiveness and total discharge, total recovered, and successful antibiotics. 
+              This signifies that the effectiveness of an environmental clean, or the success 
+              per clean, directly impacts whether patients will be able to recover from being 
+              infected and eventually discharged. Cleaning effectively also supports successful 
+              antibiotic administration, which we found particularly interesting. Since each 
+              intervention method happens independently from the other, it would be unlikely 
+              that one directly affects the other. However, it could be hypothesized that 
+              because of each effective clean on a patch, this would indirectly impact a 
+              successful antibiotic administration due to a successful clean leaving patients 
+              with a smaller chance to become infected. We have also found that as the amount 
+              of time passes before administering antibiotics, the days the patient remains 
+              infected increases as well (r = 0.76). Although we have analyzed and obtained 
+              some unique and interesting metrics, the model has plenty of complexity left to 
+              add, so in the future we would like to do just that, along with coordinating 
+              with other domain experts to determine the best course of action to achieve a 
+              higher complexity model. Some of the complexities we would like to add are adding 
+              other types of hospital agents, such as nurses to administer antibiotics and check 
+              on patients and cleaners to conduct cleaning instead of an entire environmental 
+              clean. We would also like to reform the bacterial agents to reflect slightly more 
+              realistic bacterial reproduction within an environment, introducing quorum-sensing 
+              to each type of bacteria, and assess other forms of interventions such as 
+              quarantining strategies.
             </p>
 
             <p>
-              The expected outcomes include insights into transmission
-              pathways, evaluation of intervention strategies, data-driven
-              recommendations, and a contribution to the broader field. The
-              model will provide valuable information on how antibiotic-resistant
-              gram-negative bacteria spread within different environments. By
-              identifying high-risk areas and transmission pathways, public
-              health officials can better target preventive strategies. The
-              simulations will allow evaluation of public health strategies to
-              support policy and resource allocation decisions.
-            </p>
-
-            <h3>Research or Development Objective</h3>
-            <p>
-              Our simulation will be built using NetLogo, an agent-based
-              modeling platform that creates the conditions necessary to
-              replicate population dynamics across locations like hospitals,
-              households, and food markets. The model will represent multiple
-              transmission paths—direct contact, airborne particles, and
-              contaminated surfaces—with varying probabilities and
-              environmental characteristics.
-            </p>
-
-            <p>
-              The literature review will involve analyzing existing research on
-              bacterial transmission, antibiotic resistance mechanisms, and
-              public health interventions. Sources will include academic
-              journals and case studies from institutions such as the CDC and
-              WHO to help refine model parameters like infection
-              probabilities, incubation periods, and treatment effectiveness.
-            </p>
-
-            <h3>Timeline</h3>
-            <ul>
-              <li>Literature review completed by April 18, 2025</li>
-              <li>Model draft completed by May 8, 2025</li>
-              <li>Model completed by August 18, 2025</li>
-              <li>Implementation of the Agent-Based Model completed by October 18, 2025</li>
-              <li>Domain Expert Test completed by November 15, 2025</li>
-              <li>Final Agent-Based Model completed by December 1, 2025</li>
-            </ul>
-
-            <h3>Your Interest and Qualifications</h3>
-            <p>
-              We are deeply interested in the intersection of public health and
-              computer science, particularly using technology to address
-              real-world challenges affecting vulnerable populations. The
-              threat of antibiotic-resistant bacteria demands innovative,
-              data-driven solutions. This project allows us to apply technical
-              skills to model and better understand bacterial transmission
-              dynamics.
-            </p>
-
-            <p>
-              Both authors have completed coursework in software development,
-              data structures, and algorithms, equipping them with the
-              foundational skills for building ABMs. Esther has a background in
-              statistical analysis and interest in healthcare applications,
-              while David has experience with NetLogo and complex systems
-              modeling. Together, they will dedicate at least 6–8 hours per
-              week during the semester, with additional time over the summer and
-              fall to maintain project momentum.
-            </p>
-
-            <h3>Collaboration with Advisor, Outside Experts, and Users</h3>
-            <p>
-              We are working under the guidance of Professor Eric Araujo and
-              plan weekly meetings. We will also collaborate with domain experts
-              (John Wetrz and Dani McBride) to validate assumptions and refine
-              the model based on their experience.
+              These future additions would be a great steppingstone toward a more realistic hospital 
+              scenario. Elaborating on these future additions, it is important to note some key 
+              technological points and lessons discovered while creating this model: 1) Mutation 
+              isn't just binary. For example, in our current model we implemented a 1% chance every 
+              tick that a non-resistant bacteria variant can mutate into their antibiotic-resistant 
+              variant, displaying a binary logic of 1 or 0, resistant or not. This can be further 
+              enhanced, however, outside of a 0 or 1 binary logic path. Mutations can continue to 
+              happen for already resistant bacterial variants, allowing the resistance factor to 
+              increase with each mutation. This logical path would represent mutations as a spectrum, 
+              instead of an on/off switch. 2) Research is more important than implementation. 
+              When creating complex models to simulate real world scenarios, it is important to 
+              realize that the preliminary research and development phase of a project is just as, if 
+              not more important than the actual implementation. Preliminary research provides useful 
+              niches and information for building a strong foundation for a model being built from scratch. 
+              For example, the BSim framework, although not necessarily what we were looking for, provided 
+              useful insights on how computational agent-based modeling frameworks are structured and 
+              integrated using real data. Our model, although meant to be used in advance to optimize 
+              health policies against nosocomial bacteria, can be simulated using real world data and 
+              statistics from other studies conducted that are similar, in turn providing a level of realism 
+              in the model that cannot be implied through the implementation. 3) Cleaning is the backbone to 
+              fighting bacteria. These gram-negative bacteria can survive for months on surfaces. This implies 
+              that cleaning is not just to support personal hygiene and environmental health, but it is rather 
+              a parameter that can fundamentally alter the outcome of bacterial dynamics within a system. 
+              This is directly reflected in the input -> output heatmap, where cleaning-effectiveness was 
+              directly correlated to not only patient recoveries and discharges, but also to whether 
+              antibiotics were successful. We touched on the hypothesis of why this occurrence may be, 
+              and although we do not have the resources to test this theory, it would be fundamentally 
+              incorrect to inquire that successfully cleaning and removing harmful bacteria from a system would
+              result in a failure to give the infected patient a greater chance at recovery.
             </p>
           </div>
         </div>

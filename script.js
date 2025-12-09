@@ -54,4 +54,24 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }, 3500);
   });
+
+  // Report page: auto-generate image captions from alt text
+  const isReport = (location.pathname.split('/').pop() || '').toLowerCase() === 'report.html';
+  if (isReport) {
+    const images = document.querySelectorAll('.report-card img, .report-article img');
+    images.forEach((img) => {
+      const alt = img.getAttribute('alt');
+      if (!alt || img.closest('figure')) return;
+
+      const figure = document.createElement('figure');
+      figure.className = 'report-figure';
+      img.parentNode.insertBefore(figure, img);
+      figure.appendChild(img);
+
+      const caption = document.createElement('figcaption');
+      caption.className = 'report-figcaption';
+      caption.textContent = alt;
+      figure.appendChild(caption);
+    });
+  }
 });
