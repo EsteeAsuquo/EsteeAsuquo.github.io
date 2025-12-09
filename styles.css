@@ -50,11 +50,11 @@ body {
   border-bottom: 1px solid rgba(255, 255, 255, 0.04);
   position: sticky;
   top: 0;
-    --bg: #e0b000; /* medium yellow */
   width: 100%;
   min-height: 72px; /* ensure consistent height */
   display: flex;
   align-items: center; /* vertically center header content */
+  z-index: 1000; /* keep header above page content */
 }
 
 /* Make header content span full viewport width */
@@ -299,7 +299,6 @@ body {
   border-radius: 8px;
   box-shadow: 0 4px 18px rgba(0, 0, 0, 0.25);
 }
-  max-width: 720px;
 @media (max-width: 900px) {
   .code-images img {
     max-width: 100%; /* full width on small screens */
@@ -719,7 +718,7 @@ body {
 /* ensure the article appears above the footer if overlap occurs */
 .report-article {
   position: relative;
-  z-index: 2;
+  z-index: 0; /* ensure header (z-index 1000) stays on top when scrolling */
 }
 
 .site-footer {

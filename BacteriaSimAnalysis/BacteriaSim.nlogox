@@ -35,6 +35,10 @@ patients-own [
   antibiotic-failures
   healthy-ticks
   ever-healed?
+  symptoms?
+  symptom-delay           ;; ticks until symptoms appear (300–1200)
+  symptom-onset-tick      ;; tick when symptoms started
+  antibiotics-after-symptoms-count ;; number of antibiotic administrations after symptoms
 ]
 
 bacteria-own [
@@ -94,6 +98,10 @@ to init-patient-vars
   set antibiotic-failures 0
   set healthy-ticks 0
   set ever-healed? false
+  set symptoms? false
+  set symptom-delay 0
+  set symptom-onset-tick -1
+  set antibiotics-after-symptoms-count 0
 end
 
 to setup-bacteria
@@ -179,16 +187,34 @@ to patient-behavior
     set days-infected days-infected + 1
     set antibiotic-timer antibiotic-timer + 1
     set healthy-ticks 0 ; reset since patient is sick
-    
-    if antibiotic-application [
-      if antibiotic-timer >= antibiotic-administration-period [
-        set antibiotic-timer 0
-        administer-antibiotics
+
+    ;; Symptoms appear between 300 and 1200 ticks post-infection
+    ;; Immunocompromised patients show symptoms sooner (bias to shorter window)
+    if (not symptoms?) [
+      if (symptom-delay = 0) [
+        ifelse immunocompromised? [
+          set symptom-delay 250 + random 801  ;; ~3–10.5 days
+        ] [
+          set symptom-delay 300 + random 901  ;; ~3–12 days
+        ]
+      ]
+      if (days-infected >= symptom-delay) [
+        set symptoms? true
+        set symptom-onset-tick ticks
       ]
     ]
     
-    ;; Death after 700 ticks without being cured
-    if days-infected >= 700 [
+    ;; Allow antibiotics only after symptoms
+    if (antibiotic-application and symptoms?) [
+      if antibiotic-timer >= antibiotic-administration-period [
+        set antibiotic-timer 0
+        administer-antibiotics
+        set antibiotics-after-symptoms-count antibiotics-after-symptoms-count + 1
+      ]
+    ]
+    
+    ;; Death condition: 700 ticks after symptoms if at least one antibiotic was administered and not cured
+    if (symptoms? and (antibiotics-after-symptoms-count >= 1) and ((ticks - symptom-onset-tick) >= 700)) [
       set alive? false
       set patient-deaths patient-deaths + 1
       die
@@ -224,6 +250,16 @@ to check-for-environment-infection
       set infected? true
       set color red
       set antibiotic-timer 0
+      set days-infected 0
+      set symptoms? false
+      ;; schedule symptoms window with immunocompromised bias
+      ifelse immunocompromised? [
+        set symptom-delay 250 + random 801
+      ] [
+        set symptom-delay 300 + random 901
+      ]
+      set symptom-onset-tick -1
+      set antibiotics-after-symptoms-count 0
       
       let source-bacterium one-of bacteria-here
       set pathogen-resistant? [carbapenem-resistant?] of source-bacterium
